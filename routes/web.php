@@ -21,5 +21,5 @@ Route::middleware('auth')->group(function () {
 Route::get('/cities', [CityController::class, 'index'])->name('cities.index');
 Route::get('/cities/create', [CityController::class, 'create'])->name('cities.create');
 Route::post('/cities/store', [CityController::class, 'store'])->name('cities.store');
-
+Route::resource('cities', CityController::class);
 require __DIR__.'/auth.php';
