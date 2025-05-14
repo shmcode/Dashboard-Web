@@ -10,11 +10,20 @@ class CityController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        $cities = City::all();
+    public function index(Request $request){
+        $perPage = 3;
+        $page = $request->get('page', 1);
+
+        $cities = City::orderBy('name', 'asc')->paginate($perPage, ['*'], 'page', $page);
+
+        // Si no hay resultados en esta página y no estamos en la primera
+        if ($cities->isEmpty() && $page > 1) {
+            return redirect()->route('cities.index', ['page' => $page - 1]);
+        }
+
         return view('cities.index', compact('cities'));
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -62,18 +71,23 @@ class CityController extends Controller
 
         $city = City::findOrFail($id);
         $city->update($request->all());
-        
-        return redirect()->route('cities.index')->with('success', 'Ciudad actualizada exitosamente.');
+
+        $page = $request->input('page', 1);
+
+        return redirect()->route('cities.index', ['page' => $page])->with('success', 'Ciudad actualizada exitosamente.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
-    {
+    public function destroy(Request $request, string $id){
+        $page = $request->input('page', 1);
         $city = City::findOrFail($id);
         $city->delete();
-        
-        return redirect()->route('cities.index')->with('success', 'Ciudad eliminada exitosamente.');
+
+        // Redirige a la misma página (index se encargará de bajarla si está vacía)
+        return redirect()->route('cities.index', ['page' => $page])
+                        ->with('success', 'Ciudad eliminada exitosamente.');
     }
+
 }

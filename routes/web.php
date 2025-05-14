@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CityController;
+use App\Http\Controllers\CitizenController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -22,4 +23,10 @@ Route::get('/cities', [CityController::class, 'index'])->name('cities.index');
 Route::get('/cities/create', [CityController::class, 'create'])->name('cities.create');
 Route::post('/cities/store', [CityController::class, 'store'])->name('cities.store');
 Route::resource('cities', CityController::class);
+
+Route::get('/citizens', [CitizenController::class, 'index'])->name('citizens.index');
+Route::get('/citizens/create', [CitizenController::class, 'create'])->name('citizens.create');
+Route::post('/citizens/store', [CitizenController::class, 'store'])->name('citizens.store');
+Route::resource('citizens', CitizenController::class);
+
 require __DIR__.'/auth.php';

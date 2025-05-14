@@ -18,6 +18,9 @@
                     <x-nav-link :href="route('cities.index')" :active="request()->routeIs('cities.*')">
                         {{ __('Cities') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('citizens.index')" :active="request()->routeIs('citizens.*')">
+                        {{ __('Citizens') }}
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -72,6 +75,12 @@
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('cities.index')" :active="request()->routeIs('cities.*')">
+                {{ __('Cities') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('citizens.index')" :active="request()->routeIs('citizens.*')">
+                {{ __('Citizens') }}
             </x-responsive-nav-link>
         </div>
 
