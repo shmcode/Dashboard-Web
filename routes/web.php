@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\CitizenController;
+use App\Http\Controllers\ReportCitizenController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -29,4 +30,6 @@ Route::get('/citizens/create', [CitizenController::class, 'create'])->name('citi
 Route::post('/citizens/store', [CitizenController::class, 'store'])->name('citizens.store');
 Route::resource('citizens', CitizenController::class);
 
+Route::get('/send-report', [ReportCitizenController::class, 'send_report'])->middleware(['auth'])->name('report.send_report');
+Route::get('/citizens-by-city', [ReportCitizenController::class, 'index'])->middleware(['auth'])->name('report.citizens-by-city');
 require __DIR__.'/auth.php';

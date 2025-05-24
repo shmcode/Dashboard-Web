@@ -10,6 +10,7 @@
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -32,5 +33,28 @@
                 {{ $slot }}
             </main>
         </div>
+        @if (session('status'))
+            <script>
+                Swal.fire({
+                    title: "Éxito",
+                    text: "{{ session('status') }}",
+                    icon: "success",
+                    confirmButtonText: "Aceptar",
+                    timer: 3000,
+                    timerProgressBar: true
+                });
+            </script>
+        @endif
+
+        @if (session('error'))
+            <script>
+                Swal.fire({
+                    title: "Error",
+                    text: "{{ session('error') }}",
+                    icon: "error",
+                    confirmButtonText: "Aceptar"
+                });
+            </script>
+        @endif
     </body>
 </html>

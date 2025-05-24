@@ -12,7 +12,7 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    <x-nav-link :href="route('report.citizens-by-city')" :active="request()->routeIs('report.citizens-by-city')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
                     <x-nav-link :href="route('cities.index')" :active="request()->routeIs('cities.*')">
@@ -20,6 +20,9 @@
                     </x-nav-link>
                     <x-nav-link :href="route('citizens.index')" :active="request()->routeIs('citizens.*')">
                         {{ __('Citizens') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('report.send_report')" :active="request()->routeIs('emails.send_report')">
+                        {{ __('Send Report') }}
                     </x-nav-link>
                 </div>
             </div>
@@ -73,7 +76,7 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+            <x-responsive-nav-link :href="route('report.citizens-by-city')" :active="request()->routeIs('report.citizens-by-city')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('cities.index')" :active="request()->routeIs('cities.*')">
@@ -81,6 +84,9 @@
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('citizens.index')" :active="request()->routeIs('citizens.*')">
                 {{ __('Citizens') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('report.send_report')" :active="request()->routeIs('emails.send_report')">
+                {{ __('Send Report') }}
             </x-responsive-nav-link>
         </div>
 

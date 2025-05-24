@@ -39,7 +39,8 @@ class CityController extends Controller
     public function store(Request $request)
     {
         City::create($request->all());
-        return redirect()->route('cities.index')->with('success', 'City created successfully.');
+        return redirect()->route('cities.index')->with('status', 'Ciudad guardada con éxito');
+
     }
 
     /**
@@ -74,7 +75,7 @@ class CityController extends Controller
 
         $page = $request->input('page', 1);
 
-        return redirect()->route('cities.index', ['page' => $page])->with('success', 'Ciudad actualizada exitosamente.');
+        return redirect()->route('cities.index', ['page' => $page])->with('status', 'Ciudad actualizada exitosamente.');
     }
 
     /**
