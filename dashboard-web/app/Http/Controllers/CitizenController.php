@@ -31,6 +31,7 @@ class CitizenController extends Controller
         return view('citizens.grouped', compact('cities'));
     }
 
+
     /**
      * Show the form for creating a new resource.
      */

@@ -27,6 +27,10 @@
                 Ver ciudadanos agrupados por ciudad
             </a>
         </div>
+
+    <div class="py-10 bg-gray-100 min-h-screen">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
             <div class="bg-white shadow-lg rounded-xl overflow-hidden">
                 <table class="min-w-full divide-y divide-gray-200">
                     <thead class="bg-gradient-to-r from-gray-100 to-gray-200">
