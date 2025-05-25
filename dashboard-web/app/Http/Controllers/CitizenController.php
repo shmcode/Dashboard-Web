@@ -22,6 +22,16 @@ class CitizenController extends Controller
         }
     }
 
+    public function indexAgrupado()
+    {
+        $cities = City::with(['citizens' => function ($query) {
+            $query->orderBy('last_name')->orderBy('first_name');
+        }])->orderBy('name')->get();
+
+        return view('citizens.grouped', compact('cities'));
+    }
+
+
     /**
      * Show the form for creating a new resource.
      */
