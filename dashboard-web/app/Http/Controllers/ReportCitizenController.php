@@ -17,11 +17,12 @@ class ReportCitizenController extends Controller
 
         // Ciudades con sus ciudadanos ordenados
         $cities = City::with(['citizens' => function($query) {
-            $query->orderBy('first_name'); 
+            $query->orderBy('first_name');
         }])->orderBy('name')->get();
 
-        Mail::to($email)->send(new ReportMail($cities));
+        $subject = "Reporte de ciudadanos";
 
-        return back()->with('success', 'Reporte enviado correctamente');
+        Mail::to($email)->send(new ReportMail($cities, $subject));
+        return back()->with('success', 'Reporte enviado exitosamente.');
     }
 }
