@@ -22,7 +22,7 @@
                         {{ __('Citizens') }}
                     </x-nav-link>
                     <x-nav-link :href="route('custom-dashboard')" :active="request()->routeIs('dashboard.index')">
-                        {{ __('New Dashboard') }}
+                        {{ __('Statistics') }}
                     </x-nav-link>
                 </div>
             </div>
