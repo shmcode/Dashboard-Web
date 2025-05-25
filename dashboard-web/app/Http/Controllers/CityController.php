@@ -117,7 +117,7 @@ class CityController extends Controller
                 return redirect()->route('cities.index')->with([
                     'swal_type' => 'error',
                     'swal_title' => 'Alerta',
-                    'swal_text' => 'Esta ciudad no se puede eliminat porque tiene ciudadanos asociados.'
+                    'swal_text' => 'Esta ciudad no se puede eliminar porque tiene ciudadanos asociados.'
                 ]);
             }
 
@@ -135,6 +135,8 @@ class CityController extends Controller
             ]);
         }
     }
+
+
 
 
     
