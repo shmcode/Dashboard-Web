@@ -21,8 +21,8 @@
             Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
         });
 
-        Route::get('/citizens/groupedbycity', [CitizenController::class, 'indexAgrupado'])->name('citizens.grouped');
-
+        Route::get('/citizens/grouped', [CitizenController::class, 'grouped'])->name('citizens.grouped');
+        
         Route::middleware(['auth'])->group(function () {
             Route::resource('cities', CityController::class);
             Route::resource(('citizens'), CitizenController::class);
@@ -40,4 +40,3 @@
 
 
         require __DIR__.'/auth.php';
-
