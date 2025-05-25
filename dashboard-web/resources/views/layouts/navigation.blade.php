@@ -21,6 +21,7 @@
                     <x-nav-link :href="route('citizens.index')" :active="request()->routeIs('citizens.*')">
                         {{ __('Citizens') }}
                     </x-nav-link>
+
                     <x-nav-link :href="route('custom-dashboard')" :active="request()->routeIs('dashboard.index')">
                         {{ __('Statistics') }}
                     </x-nav-link>
