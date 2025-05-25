@@ -4,6 +4,8 @@
         use Illuminate\Support\Facades\Route;
         use App\Http\Controllers\CityController;
         use App\Http\Controllers\CitizenController;
+        use App\Http\Controllers\ReportCitizenController;
+
 
         Route::get('/', function () {
             return view('welcome');
@@ -21,10 +23,10 @@
 
         Route::get('/citizens/groupedbycity', [CitizenController::class, 'indexAgrupado'])->name('citizens.grouped');
 
-        route::middleware(['auth'])->group(function () {
+        Route::middleware(['auth'])->group(function () {
             Route::resource('cities', CityController::class);
             Route::resource(('citizens'), CitizenController::class);
-            Route::get("/report");
+            Route::get('report', [ReportCitizenController::class, 'send_report'])->name('report');
         });
 
         Route::get('/custom-dashboard', [App\Http\Controllers\NewDashboardController::class, 'index'])->name('custom-dashboard');
