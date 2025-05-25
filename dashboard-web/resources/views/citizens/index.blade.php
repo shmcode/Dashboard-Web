@@ -15,8 +15,18 @@
         </div>
     </x-slot>
 
-    <div class="py-10 bg-gray-100 min-h-screen">
+    <div class="py-5 bg-gray-100 min-h-screen">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="py-5">
+            <a href="{{ route('citizens.grouped') }}"
+            class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-600 to-blue-400 hover:from-blue-700 hover:to-blue-500 text-white font-semibold rounded">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" stroke-width="2"
+                    viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+                </svg>
+                Ver ciudadanos agrupados por ciudad
+            </a>
+        </div>
             <div class="bg-white shadow-lg rounded-xl overflow-hidden">
                 <table class="min-w-full divide-y divide-gray-200">
                     <thead class="bg-gradient-to-r from-gray-100 to-gray-200">
