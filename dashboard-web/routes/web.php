@@ -23,7 +23,7 @@ Route::middleware('auth')->group(function () {
 route::middleware(['auth'])->group(function () {
     Route::resource('cities', CityController::class);
     Route::resource(('citizens'), CitizenController::class);
-    Route::get("/report");
+    Route::get('report', [ReportCitizenController::class, 'send_report'])->name('report');
 });
 
 
