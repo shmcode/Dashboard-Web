@@ -26,7 +26,7 @@ route::middleware(['auth'])->group(function () {
     Route::get("/report");
 });
 
-
+Route::get('/custom-dashboard', [App\Http\Controllers\NewDashboardController::class, 'index'])->name('custom-dashboard');
 
 Route::post('/toggle-darkmode', function () {
     $darkMode = session('dark_mode', false);
