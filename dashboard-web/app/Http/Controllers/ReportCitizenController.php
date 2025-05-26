@@ -15,7 +15,6 @@ class ReportCitizenController extends Controller
         $user = $request->user();
         $email = $user->email;
 
-        // Ciudades con sus ciudadanos ordenados
         $cities = City::with(['citizens' => function($query) {
             $query->orderBy('first_name');
         }])->orderBy('name')->get();
