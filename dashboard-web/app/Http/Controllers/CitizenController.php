@@ -129,4 +129,35 @@ class CitizenController extends Controller
             return redirect()->back()->with('error', 'Error al eliminar el ciudadano: ' . $e->getMessage());
         }
     }
+
+    public function grouped(Request $request){
+    $search = $request->input('search');
+
+    // Siempre obtener todas las ciudades con ciudadanos filtrados por búsqueda
+    $cities = City::with(['citizens' => function($query) use ($search) {
+        if ($search) {
+            $query->where('first_name', 'like', "%{$search}%")
+                  ->orWhere('last_name', 'like', "%{$search}%");
+        }
+    }])->get();
+
+    if ($search) {
+    $cities = $cities->filter(function($city) use ($search) {
+        $cityNameMatch = stripos($city->name, $search) !== false;
+        $hasCitizens = $city->citizens->isNotEmpty();
+        return $cityNameMatch || $hasCitizens;
+    })->values();
+
+    foreach ($cities as $city) {
+        if (stripos($city->name, $search) !== false) {
+            $city->setRelation('citizens', $city->citizens()->get());
+        }
+    }
+    }
+
+
+    return view('citizens.grouped', ['cities' => $cities]);
+    }
+
+
 }
